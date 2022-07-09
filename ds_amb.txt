@@ -1,0 +1,876 @@
+-- phpMyAdmin SQL Dump
+-- version 3.5.2.2
+-- http://www.phpmyadmin.net
+--
+-- ??????: 127.0.0.1
+-- ??????? ?????: ???????? 14, 2018 ??? 08:06 AM ?
+-- ?????????? ???????: 5.5.27
+-- PHP ???????: 5.4.7
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- ?????????: `maxdb`
+--
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `biz_register`
+--
+
+CREATE TABLE IF NOT EXISTS `biz_register` (
+  `trans_id` int(11) NOT NULL AUTO_INCREMENT,
+  `ent_id` varchar(12) NOT NULL,
+  `biz_name` varchar(40) NOT NULL,
+  `biz_cat` varchar(25) NOT NULL,
+  `biz_prod` varchar(25) NOT NULL,
+  `biz_dis` varchar(25) NOT NULL,
+  `biz_div` varchar(25) NOT NULL,
+  `biz_add` varchar(50) NOT NULL,
+  `biz_add2` varchar(30) NOT NULL,
+  `biz_tp` int(14) NOT NULL,
+  `biz_email` varchar(30) NOT NULL,
+  `user` varchar(12) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`trans_id`),
+  UNIQUE KEY `biz_name` (`biz_name`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- ??? ???? ??????? ???? `biz_register`
+--
+
+INSERT INTO `biz_register` (`trans_id`, `ent_id`, `biz_name`, `biz_cat`, `biz_prod`, `biz_dis`, `biz_div`, `biz_add`, `biz_add2`, `biz_tp`, `biz_email`, `user`, `date`) VALUES
+(12, '1', 'ab pvt', 'ELECTRONIC', 'electronic', '', '', '15,nw', '', 5465654, 'asdsd@kjk', 'hemal', '2010-10-04 19:21:53'),
+(13, 'hemal', 'abd pvt', '3', 'GSHGH', '', '', 'GFSHGH', '', 718060578, 'hemal@localhost', 'hemal', '2005-08-19 02:26:34'),
+(14, 'hemal', 'abd2 pvt', 'FOOD', 'GSHGH', '', '', 'GFSHGH', '', 718060578, 'hemal@localhost', 'hemal', '2005-08-19 02:36:48'),
+(15, '', 'hk product', 'CHEMICALE', 'milk related', 'Kandy', 'panvila', '46,test ad', 'address 02', 81235465, 'hemal@localhost', 'hemal', '2010-10-17 18:58:46'),
+(16, 'hemal', 'hk product2', 'CHEMICALE', 'milk related', 'Kandy', 'patha', '46,test ad', 'address 02', 81235465, 'hemal@localhost', 'hemal', '2010-10-17 19:03:16');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `branch`
+--
+
+CREATE TABLE IF NOT EXISTS `branch` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `branch` varchar(30) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- ??? ???? ??????? ???? `branch`
+--
+
+INSERT INTO `branch` (`id`, `branch`) VALUES
+(8, 'Administration _Section'),
+(9, 'Front_Office'),
+(10, 'Registrar_Section'),
+(11, 'Account_Section'),
+(12, 'Land_Section'),
+(13, 'Planning_Section'),
+(14, 'Social_Service_and_Social_Econ'),
+(15, 'Economic_Development_Officer'),
+(16, 'Grama_Niladari'),
+(17, 'Field_Officers'),
+(18, 'Divisional_Secretary ');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `district`
+--
+
+CREATE TABLE IF NOT EXISTS `district` (
+  `dis_id` int(11) NOT NULL,
+  `district` varchar(30) NOT NULL,
+  PRIMARY KEY (`dis_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- ??? ???? ??????? ???? `district`
+--
+
+INSERT INTO `district` (`dis_id`, `district`) VALUES
+(1, 'Colombo'),
+(2, 'Gampaha'),
+(3, 'Kaluthara'),
+(4, 'Kandy'),
+(5, 'Nuwara_Eliya'),
+(6, 'Mathale'),
+(7, 'Kegalle');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `division`
+--
+
+CREATE TABLE IF NOT EXISTS `division` (
+  `div_id` int(11) NOT NULL,
+  `dis_id` int(11) NOT NULL,
+  `division` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- ??? ???? ??????? ???? `division`
+--
+
+INSERT INTO `division` (`div_id`, `dis_id`, `division`) VALUES
+(1, 4, 'Gangawata Korale'),
+(2, 4, 'Yatinuwara'),
+(3, 4, 'Udunuwara'),
+(4, 4, 'Udapalatha'),
+(5, 4, 'Doluva'),
+(6, 4, 'Pasbage korale'),
+(7, 4, 'Ganga Ihala korale'),
+(8, 4, 'Delthota'),
+(9, 4, 'Hatharaliyadda'),
+(10, 4, 'Thumpane'),
+(11, 4, 'Akurana'),
+(12, 4, 'Harispaththuva'),
+(13, 4, 'Pujapitiya'),
+(14, 4, 'Patha Dumbara'),
+(15, 4, 'Meda Dumbara'),
+(16, 4, 'Udadumbara'),
+(17, 4, 'Minipe'),
+(18, 4, 'Kundasale'),
+(19, 4, 'patha hevahata'),
+(20, 4, 'panvila');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `ent_info`
+--
+
+CREATE TABLE IF NOT EXISTS `ent_info` (
+  `reg_no` int(11) NOT NULL AUTO_INCREMENT,
+  `l_name` varchar(15) DEFAULT '""',
+  `f_name` varchar(15) DEFAULT '""',
+  `m_name` varchar(15) DEFAULT '""',
+  `marital` int(11) DEFAULT '0',
+  `gender` int(11) NOT NULL DEFAULT '0',
+  `nic` varchar(10) DEFAULT '0',
+  `dob` date DEFAULT NULL,
+  `add1` varchar(25) DEFAULT '""',
+  `add2` varchar(25) DEFAULT '""',
+  `distric` varchar(20) NOT NULL,
+  `division` varchar(20) NOT NULL,
+  `tp` int(14) DEFAULT '0',
+  `tp2` int(11) NOT NULL,
+  `email` varchar(30) DEFAULT '""',
+  `user_id` varchar(12) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`reg_no`),
+  UNIQUE KEY `user_id` (`user_id`),
+  UNIQUE KEY `nic_3` (`nic`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- ??? ???? ??????? ???? `ent_info`
+--
+
+INSERT INTO `ent_info` (`reg_no`, `l_name`, `f_name`, `m_name`, `marital`, `gender`, `nic`, `dob`, `add1`, `add2`, `distric`, `division`, `tp`, `tp2`, `email`, `user_id`, `date`) VALUES
+(1, 'hemal', 'kaviraj', 'hashantha', 0, 0, '78299', '2010-10-25', '16', 'ginigathena', 'kandy', 'pasbagekorale', 54545, 0, 'hemal@localhost', 'hemal', '2010-10-17'),
+(2, 'kaviraj', 'hemal', '', 0, 0, '785655656v', '2010-10-25', '14,samansirigama', 'Ginigathena', 'kandy', 'Patha', 125785887, 512242106, 'hemal@localhost', 'kaviraj', '2005-08-19');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `gn`
+--
+
+CREATE TABLE IF NOT EXISTS `gn` (
+  `gn_no` varchar(10) NOT NULL,
+  `gn_name` varchar(50) NOT NULL,
+  PRIMARY KEY (`gn_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- ??? ???? ??????? ???? `gn`
+--
+
+INSERT INTO `gn` (`gn_no`, `gn_name`) VALUES
+('314', 'Ambagamuva South'),
+('314A', 'Ambagamuva East'),
+('314B', 'Ambagamuva North'),
+('314C', 'Sellipigama'),
+('314D', 'Homagama'),
+('314E', 'Kalaweldeniya'),
+('314F', 'Dehigasthenna'),
+('314G', 'Habbakanda'),
+('315', 'Thiniyagala'),
+('315A', 'Ginigathena'),
+('315B', 'Samansirigama'),
+('315C', 'Vidulipura South'),
+('315D', 'Vidulipura North'),
+('316', 'Bulathgama'),
+('316A', 'Rampadeniya'),
+('316B', 'Goonawala'),
+('316C', 'Kalugala'),
+('316D', 'Pitawala'),
+('316E', 'Milalagahamula'),
+('316F', 'Dagampitiya'),
+('316G', 'Kehelwarawa'),
+('317', 'Kiriwaneliya'),
+('317A', 'Laxapana'),
+('317B', 'Waggama'),
+('317C', 'Morahenagama'),
+('318', 'Polpitiya'),
+('318A', 'Hitigegama'),
+('318B', 'Hangarapitiya'),
+('318C', 'Minuwandeniya'),
+('318D', 'Jambuthenna'),
+('318E', 'Kothtellana'),
+('319', 'Dickoya'),
+('319A', 'Dickoya South'),
+('319B', 'Hatton North '),
+('319C', 'Hatton West'),
+('319D', 'Hatton South'),
+('319E', 'Hatton East'),
+('319F', 'Bagawanthalawa South'),
+('319G', 'Karcusworld'),
+('319H', 'Newweligama'),
+('319I', 'Enfield'),
+('319J', 'Wanaraja'),
+('319K', 'Lethanti'),
+('319L', 'Injustry'),
+('319M', 'Tilary'),
+('319N', 'Bogawana'),
+('319O', 'Loinone'),
+('319P', 'Kotiyagala'),
+('320', 'Norwood'),
+('320A', 'Maskeliya'),
+('320B', 'Seethagangula'),
+('320C', 'Gawaravila'),
+('320D', 'Straspy'),
+('320E', 'Rosella'),
+('320F', 'Watawala'),
+('320G', 'Ruwanpura'),
+('320H', 'Mare'),
+('320I', 'Mausakele'),
+('320J', 'Altern'),
+('320K', 'Mahanelu'),
+('320L', 'Venture'),
+('320M', 'Brownsvic'),
+('320N', 'Brownslaw'),
+('320O', 'Shananan'),
+('320P', 'Welioya'),
+('320Q', 'Moka'),
+('320R', 'Panmoor');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `issues`
+--
+
+CREATE TABLE IF NOT EXISTS `issues` (
+  `issue_id` int(11) NOT NULL AUTO_INCREMENT,
+  `client` varchar(30) DEFAULT NULL,
+  `title` varchar(25) DEFAULT NULL,
+  `issue` text NOT NULL,
+  `date` datetime NOT NULL,
+  `auth` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`issue_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+--
+-- ??? ???? ??????? ???? `issues`
+--
+
+INSERT INTO `issues` (`issue_id`, `client`, `title`, `issue`, `date`, `auth`) VALUES
+(3, 'hemal', 'computer', 'beep', '2005-08-19 01:56:57', 1),
+(4, 'hemal', 'computer', 'message id for ', '2005-08-19 01:57:21', 1),
+(5, 'acsac', 'cas', 'cdsffdsadfdfd\r\n454545454544', '0000-00-00 00:00:00', 1),
+(6, 'hkk', 'zz', 'test is', '2010-10-05 10:16:39', 1),
+(7, 'kaviraj', 'test', 'this is test message for test search', '2010-10-05 05:32:24', 1),
+(8, 'hemal@localhost', 'test retern mail', 'check the return mail of issues', '2010-10-13 22:14:05', 1),
+(9, 'hemal@localhost', 'test retern mail', 'check the return mail of issues', '2010-10-13 22:14:40', 1),
+(10, 'hemal@localhost', 'test retern mail', 'check the return mail of issues', '2010-10-13 22:15:25', 0),
+(11, '', 'computer', 'fghfghgfh', '2010-10-13 22:17:18', 0),
+(12, '', 'computer', 'fghfghgfh', '2010-10-13 22:19:59', 0),
+(13, 'hemal@localhos', 'computer', 'fghfghgfh', '2010-10-13 22:20:42', 0),
+(14, 'hemal@localhos', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:22:58', 0),
+(15, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:24:06', 0),
+(16, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:24:39', 1),
+(17, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:26:55', 1),
+(18, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:27:53', 0),
+(19, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:29:23', 1),
+(20, 'hemal@localhost', 'test retern mail', 'test the php page', '2010-10-20 20:33:52', 0),
+(21, 'hemal@localhost', 'ICT', 'wwwww', '2010-10-20 20:41:13', 1),
+(22, 'hemal@localhost', 'CHEMICALE', 'test che', '2010-10-20 21:42:30', 1);
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `message`
+--
+
+CREATE TABLE IF NOT EXISTS `message` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `recever` varchar(12) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `post` varchar(300) NOT NULL,
+  `date` datetime NOT NULL,
+  `sender` varchar(12) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=26 ;
+
+--
+-- ??? ???? ??????? ???? `message`
+--
+
+INSERT INTO `message` (`id`, `recever`, `title`, `post`, `date`, `sender`) VALUES
+(20, 'kaviraj', 'test', 'sadasdsadsd', '2005-08-19 00:31:35', 'hemal'),
+(24, 'guest', '6563565636', '735676675347', '2005-08-19 01:29:21', 'hemal'),
+(25, 'all', 'test', 'test', '2012-12-10 17:21:48', 'hemal');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `ml_subscribe`
+--
+
+CREATE TABLE IF NOT EXISTS `ml_subscribe` (
+  `trans_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` varchar(12) NOT NULL,
+  `tech_cat` int(2) NOT NULL,
+  PRIMARY KEY (`trans_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+
+--
+-- ??? ???? ??????? ???? `ml_subscribe`
+--
+
+INSERT INTO `ml_subscribe` (`trans_id`, `user_id`, `tech_cat`) VALUES
+(36, 'hemal', 5),
+(37, 'hemal', 4);
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `pages`
+--
+
+CREATE TABLE IF NOT EXISTS `pages` (
+  `pg_id` varchar(4) NOT NULL,
+  `pg_name` char(25) NOT NULL,
+  `pg_cat` int(11) NOT NULL,
+  `pg_link` varchar(40) NOT NULL,
+  PRIMARY KEY (`pg_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- ??? ???? ??????? ???? `pages`
+--
+
+INSERT INTO `pages` (`pg_id`, `pg_name`, `pg_cat`, `pg_link`) VALUES
+('adct', 'Technology Category''s', 0, ''),
+('addb', 'Add Business to user', 1, 'biz_register.php'),
+('addu', 'User Register', 1, 'ent_register.php'),
+('adpr', 'Add Program', 5, ''),
+('atis', 'Authorized Issues', 2, ''),
+('atso', 'Authorized Solutions', 2, ''),
+('chau', 'View & Change Data', 1, 'view_ent.php'),
+('flat', 'File Authorize', 3, ''),
+('flua', 'Unauthorized Files', 0, ''),
+('isat', 'Issue Authorize', 2, ''),
+('mlsb', 'Mail List Subscribe', 1, ''),
+('ncot', 'Not Complete Task', 4, ''),
+('opts', 'Open Task', 4, ''),
+('prol', 'Program List', 5, ''),
+('pron', 'Program Names', 5, ''),
+('schf', 'Search File', 3, ''),
+('schi', 'Search', 2, ''),
+('scht', 'Search', 4, ''),
+('soat', 'Solution Authorize', 2, ''),
+('solu', 'Solution''s', 2, ''),
+('subi', 'Submit Issue', 2, ''),
+('tetn', 'Task Transaction', 4, ''),
+('upfl', 'File Upload', 3, ''),
+('vatr', 'View Authorize Technical', 3, ''),
+('vnar', 'View non Authorize Techni', 3, ''),
+('vtbd', 'View Task BY Date', 4, ''),
+('vtbn', 'View Task BY Name', 4, '');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `pg_access`
+--
+
+CREATE TABLE IF NOT EXISTS `pg_access` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `page_id` varchar(4) NOT NULL,
+  `u_cat` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=180 ;
+
+--
+-- ??? ???? ??????? ???? `pg_access`
+--
+
+INSERT INTO `pg_access` (`id`, `page_id`, `u_cat`) VALUES
+(142, 'addu', 1),
+(143, 'adpr', 1),
+(144, 'atis', 1),
+(145, 'atso', 1),
+(146, 'flat', 1),
+(147, 'isat', 1),
+(148, 'mlsb', 1),
+(149, 'ncot', 1),
+(150, 'opts', 1),
+(151, 'prol', 1),
+(152, 'pron', 1),
+(153, 'schf', 1),
+(154, 'schi', 1),
+(155, 'scht', 1),
+(156, 'soat', 1),
+(157, 'solu', 1),
+(158, 'subi', 1),
+(159, 'tetn', 1),
+(160, 'upfl', 1),
+(161, 'vatr', 1),
+(162, 'vnar', 1),
+(163, 'vtbd', 1),
+(164, 'vtbn', 1),
+(167, 'adct', 2),
+(171, 'adct', 2),
+(174, 'addb', 1),
+(175, 'chau', 1),
+(176, 'chau', 1),
+(177, 'flua', 1),
+(178, 'addb', 1),
+(179, 'adct', 1);
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `product`
+--
+
+CREATE TABLE IF NOT EXISTS `product` (
+  `pro_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user` varchar(12) NOT NULL,
+  `product` varchar(30) NOT NULL,
+  PRIMARY KEY (`pro_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- ??? ???? ??????? ???? `product`
+--
+
+INSERT INTO `product` (`pro_id`, `user`, `product`) VALUES
+(1, 'hemal', 'bites');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `pro_id`
+--
+
+CREATE TABLE IF NOT EXISTS `pro_id` (
+  `trans_id` int(11) NOT NULL AUTO_INCREMENT,
+  `course_id` varchar(12) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `add` varchar(60) NOT NULL,
+  `tp` int(16) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY (`trans_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- ??? ???? ??????? ???? `pro_id`
+--
+
+INSERT INTO `pro_id` (`trans_id`, `course_id`, `name`, `add`, `tp`, `email`, `date`) VALUES
+(1, 'ntr13', 'hemal', '30, new road, nawalapitiya', 45654545, 'hjhg@bkjbh.com', '2005-08-21 04:08:51'),
+(2, 'ntr13', 'hemal2', '30, new road, nawalapitiya', 125785887, 'hjjh@hjghg.com', '2005-08-21 04:08:28'),
+(3, 'ntr13', 'hemal6', '30, new road, nawalapitiya', 776578578, 'hjjh@hjghg.com', '2005-08-21 05:08:22'),
+(4, 'eproduct3', '', '', 0, '', '2010-10-20 03:10:35');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `pro_schedule`
+--
+
+CREATE TABLE IF NOT EXISTS `pro_schedule` (
+  `pro_trns_id` int(11) NOT NULL AUTO_INCREMENT,
+  `pro_id` varchar(12) NOT NULL,
+  `program` varchar(50) NOT NULL,
+  `pro_date` datetime NOT NULL,
+  `pro_org` varchar(25) NOT NULL,
+  `pro_location` varchar(50) NOT NULL,
+  `pro_tp` int(11) NOT NULL,
+  `pro_email` varchar(50) NOT NULL,
+  `pro_vacants` int(11) NOT NULL,
+  `user` varchar(12) NOT NULL,
+  `up_date` datetime NOT NULL,
+  `pro_com` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`pro_trns_id`),
+  UNIQUE KEY `pro_id_2` (`pro_id`),
+  KEY `pro_id` (`pro_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- ??? ???? ??????? ???? `pro_schedule`
+--
+
+INSERT INTO `pro_schedule` (`pro_trns_id`, `pro_id`, `program`, `pro_date`, `pro_org`, `pro_location`, `pro_tp`, `pro_email`, `pro_vacants`, `user`, `up_date`, `pro_com`) VALUES
+(1, 'ntr13', 'dehydration', '2010-10-03 09:30:00', 'vrc psk', 'psk', 5245445, 'bv@hjgvh.com', 3, 'hemal', '2005-08-21 12:34:55', 0),
+(2, 'eproduct3', 'Training program abour e product dev', '2010-10-03 09:30:30', 'VRC pasbage', 'DS_nawalapitiya', 542222238, 'ds@pasbagekorale.lk', 30, 'hk', '2005-08-21 12:48:16', 0),
+(3, 'eproduct2', 'Training program abour e product development', '2010-11-03 09:30:00', 'VRC pasbage', 'DS_nawalapitiya', 542222238, 'ds@pasbagekorale.lk', 45, 'hemal', '2005-08-21 01:08:14', 0),
+(4, 'eproduct', 'Training program abour e product development', '2010-11-03 09:30:00', 'VRC pasbage', 'DS_nawalapitiya', 542222238, 'ds@pasbagekorale.lk', 45, 'hemal', '2005-08-21 01:08:29', 0),
+(5, 'food', '', '0000-00-00 00:00:00', '', 'psk', 0, '', 0, 'hemal', '2005-08-21 04:08:19', 1);
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `solution`
+--
+
+CREATE TABLE IF NOT EXISTS `solution` (
+  `trans_id` int(11) NOT NULL AUTO_INCREMENT,
+  `issue_id` int(11) NOT NULL,
+  `solution` text NOT NULL,
+  `catagory` varchar(20) NOT NULL DEFAULT 'other',
+  `user_ID` varchar(12) NOT NULL,
+  `date` datetime NOT NULL,
+  `auth` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`trans_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- ??? ???? ??????? ???? `solution`
+--
+
+INSERT INTO `solution` (`trans_id`, `issue_id`, `solution`, `catagory`, `user_ID`, `date`, `auth`) VALUES
+(1, 8, 'qqqq', 'other', 'hk trans', '2010-10-05 00:00:00', 1),
+(2, 9, 'qqqq', 'other', 'hk trans', '2010-10-05 00:00:00', 1),
+(3, 8, 'qqqq', 'other', 'hk trans', '2010-10-05 10:10:32', 1),
+(4, 3, 'this is test massege for check solution', 'IT', 'hk trans', '2010-10-05 05:10:31', 0),
+(5, 4, 'solution screen test', 'test', 'hk trans', '2010-10-06 23:10:32', 0),
+(6, 17, 'it is like that', 'kavirajhh@yahoo.com', 'hemal', '2010-10-20 21:10:40', 1),
+(7, 22, 'is 22 solution test', 'kavirajhh@yahoo.com', 'hemal', '2010-10-20 22:10:21', 1),
+(8, 22, 'test second', 'kavirajhh@yahoo.com', 'hemal', '2010-10-20 22:10:41', 1);
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `subject`
+--
+
+CREATE TABLE IF NOT EXISTS `subject` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `branch` varchar(30) NOT NULL,
+  `subject` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=32 ;
+
+--
+-- ??? ???? ??????? ???? `subject`
+--
+
+INSERT INTO `subject` (`id`, `branch`, `subject`) VALUES
+(12, 'Administration', 'Mahapola_Schoolership'),
+(13, 'Administration', 'Income Reports'),
+(14, 'Administration', 'NIC'),
+(15, 'Administration', 'Other'),
+(16, 'Front_Office', 'Vehicle_License'),
+(17, 'Front_Office', 'Sroff'),
+(18, 'Front_Office', 'Valuation_Record'),
+(19, 'Front_Office', 'Income_Certificates'),
+(20, 'Front_Office', 'License_for_Mineral_Excavation'),
+(21, 'Front_Office', 'Business_Registration '),
+(22, 'Front_Office', 'License_for_Animal_Transpor'),
+(23, 'Front_Office', 'Mortgage_License '),
+(24, 'Front_Office', 'Liquor_License'),
+(25, 'Front_Office', 'Timber_License'),
+(26, 'Registrar_Section', 'Birth_Certificates'),
+(27, 'Registrar_Section', 'Marriage_Certificates'),
+(28, 'Registrar_Section', 'Death_Certificates'),
+(29, 'Registrar_Section', 'Other'),
+(30, 'Account_Section', 'Pension_Payments'),
+(31, 'Account_Section', 'Other');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `task_open`
+--
+
+CREATE TABLE IF NOT EXISTS `task_open` (
+  `task_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `task_date` date NOT NULL,
+  `task_user` varchar(12) NOT NULL,
+  `task` char(100) NOT NULL,
+  `task_sec` varchar(12) NOT NULL,
+  `nic` varchar(12) NOT NULL,
+  `task_client` varchar(45) DEFAULT NULL,
+  `task_email` varchar(45) DEFAULT NULL,
+  `task_phone` int(11) DEFAULT NULL,
+  `gn` text NOT NULL,
+  `task_complete` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`task_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=127 ;
+
+--
+-- ??? ???? ??????? ???? `task_open`
+--
+
+INSERT INTO `task_open` (`task_id`, `task_date`, `task_user`, `task`, `task_sec`, `nic`, `task_client`, `task_email`, `task_phone`, `gn`, `task_complete`) VALUES
+(1, '2018-01-10', 'hemal', 'Marriage_Certificates', 'Registrar_Se', '885663460', 'malsha', '', 266666, 'Mausakele', 0),
+(2, '2018-01-15', 'hemal', 'Vehicle_License', 'Front_Office', '810573457V', 'Chaminda', '', 0, 'Ambagamuva', 0),
+(3, '2018-01-15', 'hemal', 'Valuation_Record', 'Front_Office', '456123152v', 'kumara', 'Watawala', 71584584, 'Kalaweldeniya', 0),
+(4, '2018-01-15', 'hemal', 'Birth_Certificates', 'Registrar_Se', '456123152v', 'kumara', 'Watawala', 71584584, 'Ambagamuva', 0),
+(5, '2018-01-15', 'hemal', '', 'Land_Section', '530670481', 'podimahaththaya', 'ambagamuwa udubulathgama', 0, 'Ambagamuva', 0),
+(6, '2018-01-15', 'hemal', '', 'Land_Section', '530670481', 'podimahaththaya', 'ambagamuwa udubulathgama', 0, 'Ambagamuva', 0),
+(7, '2018-01-15', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'hjhyj', '', 0, 'Ambagamuva', 0),
+(8, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '598604606v', 'M.G. Mallika', 'Galatha , Yatipiyangala', 710547369, 'Hatton', 0),
+(9, '2018-01-16', 'hemal', '', 'Divisional_S', '983391460v', 'S.Royshan', 'AOG Church, Hatton road, Watawala', 715760883, 'Watawala', 0),
+(10, '2018-01-16', 'hemal', '', 'Divisional_S', '983391460v', 'S.Royshan', 'AOG Church, Hatton road, Watawala', 715760883, 'Watawala', 0),
+(11, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '858594103v', 'siwaneshwari', 'stock home,upcot', 765620329, 'Mahanelu', 0),
+(12, '2018-01-16', 'hemal', '', 'Divisional_S', '668221645v', 'h.d wickramarathna', 'colombo rd,ginigathhena', 779745383, 'Ginigathena', 0),
+(13, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '675483825v', 'p.d.g piyawathi', 'maussakele estate,maskeliya', 771304712, 'Maskeliya', 0),
+(14, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '890230890v', 'kandaiya yogendran', 'maussakele estate,maskeliya', 778947780, 'Mausakele', 0),
+(15, '2018-01-16', 'hemal', '', 'Divisional_S', '59090739v', 'Gamini siri', 'Arsalena,kalaweldeniyaa', 515679320, 'Kalaweldeniya', 0),
+(16, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '803363633v', 'P.pathmanadan', 'No.67,upcot rd,Maskeliya', 716515221, 'Maskeliya', 0),
+(17, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '951841811', 'M.prashanthan', 'Kuilwatta,Rosella', 757695702, 'Rosella', 0),
+(18, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '707733497', 'R.Aruljothi', 'Samimale rd, Maskeliya', 783262247, 'Maskeliya', 0),
+(19, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '870420099v', 'M.Kethiswaran', 'wenture,Norwood', 766177281, 'Venture', 0),
+(20, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '772303262x', 'Perumal Rajakumaran', 'Nishshanka uyana,upcot', 714291049, 'Shananan', 0),
+(21, '2018-01-16', 'hemal', '', 'Divisional_S', '462612460', 'J.H Gunapala', 'Kanamadilihena,Laxapana', 711491134, 'Laxapana', 0),
+(22, '2018-01-16', 'hemal', 'Vehicle_License', 'Front_Office', '9102235000v', 'M.K.K weerasinha', 'bagathuluwa,ginigathhena', 75266008, 'Ambagamuva', 0),
+(23, '2018-01-16', 'hemal', 'Vehicle_License', 'Front_Office', '911803755v', 'Lechchman Jegan', 'Elbada,Bagawanthalawa', 711897824, 'Bagawanthalawa', 0),
+(24, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '197507604444', 'A.Logathamilselwan', 'Kerkasworld estate', 0, 'Bagawanthalawa', 0),
+(25, '2018-01-16', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'hjhyj', '', 0, 'Ambagamuva', 0),
+(26, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(27, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(28, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(29, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(30, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(31, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(32, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(33, '2018-01-16', 'hemal', '', 'Divisional_S', '392101870', 'N.G.punchirala', 'Gadumbawatta.Koththellena', 771264729, 'Kothtellana', 0),
+(34, '2018-01-16', 'hemal', 'Birth_Certificates', 'Registrar_Se', '797553867v', 'P.L Chamila Rohini', 'Aberdeen .vidulipura', 767090227, 'Vidulipura', 0),
+(35, '2018-01-16', 'hemal', 'Mahapola_Schoolership', 'Administrati', '703060919', 'K.Chandrasekaran', 'Mendis rd.hatton', 773551896, 'Hatton', 0),
+(36, '2018-01-17', 'hemal', 'Mahapola_Schoolership', 'Administrati', 'ghuiu', '', '', 0, 'Ambagamuva', 0),
+(37, '2018-01-17', 'hemal', '', 'Divisional_S', '892533563v', 'R.M.S MADUSHANKA', 'GINIGATHHENA', 0, 'Ambagamuva', 0),
+(38, '2018-01-17', 'hemal', '', 'Divisional_S', '892533563v', 'R.M.S MADUSHANKA', 'GINIGATHHENA', 0, 'Ambagamuva', 0),
+(39, '2018-01-17', 'hemal', '', 'Divisional_S', '510121430V', 'k.m karunarathna', 'maskeliya', 0, 'Ambagamuva', 0),
+(40, '2018-01-17', 'hemal', '', 'Divisional_S', '196659704049', 'B.G.W LOKU MENIKE', 'WATAWALA', 0, 'Ambagamuva', 0),
+(41, '2018-01-17', 'hemal', '', 'Divisional_S', '197969803558', 'T.KOKILAWANI', 'LAKSHAPANA ESTATE', 0, 'Maskeliya', 0),
+(42, '2018-01-17', 'hemal', '', 'Divisional_S', '615724092V', 'M.R. SIRIYAWATHIE', 'WATAWA', 0, 'Ambagamuva', 0),
+(43, '2018-01-17', 'hemal', '', 'Divisional_S', '615724092V', 'M.R. SIRIYAWATHIE', 'WATAWALA', 0, 'Watawala', 0),
+(44, '2018-01-17', 'hemal', '', 'Divisional_S', '872852220V', 'R BALASUBRAMANIYAM', 'LINDULA', 0, 'Hatton', 0),
+(45, '2018-01-17', 'hemal', '', 'Divisional_S', '872852220v', 'R BALASUBRAMANIYAM', 'LINDULA', 0, 'Ambagamuva', 0),
+(46, '2018-01-17', 'hemal', '', 'Divisional_S', '556021686v', 'M.A.M CHANDRALATHA', 'POLPITIYA', 0, 'Polpitiya', 0),
+(47, '2018-01-17', 'hemal', '', 'Divisional_S', '843214770V', 'M.M. ANANTHAKUMAR', 'MARE ESTATE', 0, 'Mare', 0),
+(48, '2018-01-17', 'hemal', '', 'Divisional_S', '607301700V', 'D CHANDRAWATHIE', 'AMBAGAMUWA', 0, 'Ambagamuva', 0),
+(49, '2018-01-17', 'hemal', '', 'Divisional_S', '768111065V', 'R.P.C AMARASENA', 'GINIGATHHENA', 0, 'Ginigathena', 0),
+(50, '2018-01-17', 'hemal', '', 'Divisional_S', '742601129V', 'R.M PREMADASA', 'WATAWALA', 0, 'Watawala', 0),
+(51, '2018-01-17', 'hemal', '', 'Divisional_S', '65172827V', 'R.VIJAYKUMAR', 'WATAWALA', 0, 'Ambagamuva', 0),
+(52, '2018-01-18', 'hemal', '', 'Divisional_S', '123', 'K.A MUDIYANSE', 'WATAWALA', 0, 'Watawala', 0),
+(53, '2018-01-18', 'hemal', '', 'Divisional_S', '123', 'K.A', 'WATAWALA', 0, 'Ambagamuva', 0),
+(54, '2018-01-18', 'hemal', '', 'Divisional_S', '196659704049', 'B.G.W', 'WATAWALA', 0, 'Ambagamuva', 0),
+(55, '2018-01-18', 'hemal', 'Mahapola_Schoolership', 'Administrati', '862144554', '', 'WATAWALA', 715, 'Ambagamuva', 0),
+(56, '2018-01-18', 'hemal', '', 'Land_Section', '196659704049', 'B.G.W', 'WATAWALA', 0, 'Ambagamuva', 0),
+(57, '2018-01-18', 'hemal', '', 'Divisional_S', '510121430', '', '', 0, 'Ambagamuva', 0),
+(58, '2018-01-18', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'hjhyj', '', 0, 'Ambagamuva', 0),
+(59, '2018-01-18', 'hemal', '', 'Land_Section', '196659704049', 'B.G.W', 'WATAWALA', 0, 'Ambagamuva', 0),
+(60, '2018-01-18', 'hemal', '', 'Land_Section', '196659704049', 'B.G.W', 'WATAWALA', 0, 'Ambagamuva', 0),
+(61, '2018-01-22', 'hemal', '', 'Divisional_S', '558562935', 'p nandawathi', 'nugethota', 0, 'Vidulipura', 0),
+(62, '2018-01-22', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'silawathi', 'AMBAGAMUWA', 0, 'Ambagamuva', 0),
+(63, '2018-01-22', 'hemal', 'Mahapola_Schoolership', 'Administrati', '691761304v', 'ranjith withanage', 'nallathanniya', 0, 'Ambagamuva', 0),
+(64, '2018-01-22', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'd s silawathi', 'hitiyegama', 0, 'Hatton', 0),
+(65, '2018-01-22', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'i malkanthi', 'dagampitiya', 0, 'Dagampitiya', 0),
+(66, '2018-01-22', 'hemal', '', 'Divisional_S', '195909601299', 'b upathissa perere', 'maskeliya', 775007399, 'Maskeliya', 0),
+(67, '2018-01-22', 'hemal', '', 'Divisional_S', '195909601299', 'b upathissa perere', 'maskeliya', 775007399, 'Maskeliya', 0),
+(68, '2018-01-22', 'hemal', 'Mahapola_Schoolership', 'Administrati', 'gb', '', '', 0, 'Ambagamuva', 0),
+(69, '2018-01-24', 'hemal', '', 'Divisional_S', '493271938v', 'D.M.SENAWIRATHNE BANDA', 'hitiyegama', 0, 'Ambagamuva', 0),
+(70, '2018-01-24', 'hemal', '', 'Divisional_S', '585202785V', 'G.M CHANDRA', 'MASKELIYA', 0, 'Maskeliya', 0),
+(71, '2018-01-24', 'hemal', '', 'Divisional_S', '553060630V', 'G.M KARUNATHILAKA', 'HAGARAPITIYA', 0, 'Hangarapitiya', 0),
+(72, '2018-01-24', 'hemal', '', 'Divisional_S', '123', 'G.K SUMANAWATHIE', 'MORAHENAGAMA', 0, 'Hatton', 0),
+(73, '2018-01-24', 'hemal', '', 'Divisional_S', '636352071X', 'V DEWRADI', 'NIKALOS ESTATE', 0, 'Norwood', 0),
+(74, '2018-01-24', 'hemal', '', 'Divisional_S', '860734150V', 'K.V.C.K VIDANAGE', 'MURUTHALAWA', 0, 'Ginigathena', 0),
+(75, '2018-01-24', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'CHAMINDA RATHNAYAKE', 'PERAGAHAMULA', 0, 'Ginigathena', 0),
+(76, '2018-01-24', 'hemal', 'Other', 'Administrati', '', 'CHAMINDA RATHNAYAKE', 'PERAGAHAMULA', 0, 'Ginigathena', 0),
+(77, '2018-01-24', 'hemal', 'Other', 'Administrati', '', 'CHAMINDA RATHNAYAKE', 'PERAGAHAMULA', 0, 'Ginigathena', 0),
+(78, '2018-01-24', 'hemal', '', 'Divisional_S', '402110953V', 'W.gunawardana', 'AMBAGAMUWA', 0, 'Ambagamuva', 0),
+(79, '2018-01-24', 'hemal', 'Mahapola_Schoolership', 'Administrati', '762001993v', 'k m mahinda kumara', 'nawalapitiya', 0, 'Ambagamuva', 0),
+(80, '2018-01-24', 'hemal', 'Mahapola_Schoolership', 'Administrati', '762001993v', '', '', 0, 'Ambagamuva', 0),
+(81, '2018-01-24', 'hemal', '', 'Divisional_S', '953463032v', 'S. HARISSAN', 'LOINON ESTATE', 0, 'Bagawanthalawa', 0),
+(82, '2018-01-24', 'hemal', '', 'Divisional_S', '641953199X', 'P.ANANDARADHI', 'ALTAN ESTATE', 0, 'Mahanelu', 0),
+(83, '2018-01-24', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'hjhyj', '', 0, 'Ambagamuva', 0),
+(84, '2018-01-24', 'hemal', '', 'Divisional_S', '646133912V', 'I.G.BANDARAMENIKE', 'AMBAGAMUWA', 0, 'Ambagamuva', 0),
+(85, '2018-01-25', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'hjhyj', '', 0, 'Ambagamuva', 0),
+(86, '2018-01-25', 'hemal', 'Mahapola_Schoolership', 'Administrati', '', 'hjhyj', '', 0, 'Ambagamuva', 0),
+(87, '2018-02-01', 'hemal', '', 'Divisional_S', '646991471v', 'R M Indrani', 'watawala', 0, 'Ambagamuva', 0),
+(88, '2018-02-01', 'hemal', '', 'Divisional_S', '194619710020', ' K V LILARATHNA', 'PALLEBAGE', 0, 'Goonawala', 0),
+(89, '2018-02-01', 'hemal', '', 'Divisional_S', '860023601v', 'R.SUNDARAKUMAR', 'LOWRANCE ESTATE', 0, 'Rosella', 0),
+(90, '2018-02-05', 'hemal', '', 'Divisional_S', '513331991v', 'M R Aberathna', 'kiriwaneliya', 0, 'Ambagamuva', 0),
+(91, '2018-02-05', 'hemal', '', 'Divisional_S', '710761639v', 'D M chaminda deepal', 'mahanuwara', 702128757, 'Ambagamuva', 0),
+(92, '2018-02-05', 'hemal', '', 'Divisional_S', '703003338v', 'Arulappan', 'Binnaoya Rosella', 0, 'Rosella', 0),
+(93, '2018-02-05', 'hemal', '', 'Divisional_S', '810024763v', 'h a m sudarshana', 'rampadeniya', 0, 'Ambagamuva', 0),
+(94, '2018-02-05', 'hemal', '', 'Divisional_S', '813374676v', 'sujith kumara', 'polpitiya', 0, 'Polpitiya', 0),
+(95, '2018-02-07', 'hemal', '', 'Divisional_S', '472311999v', 'R.G Sirisoma', 'nawalapitiya', 0, 'Ambagamuva', 0),
+(96, '2018-02-07', 'hemal', '', 'Divisional_S', '445432970v', 'L.P punchimahaththayo', 'Ruwanpura', 0, 'Ambagamuva', 0),
+(97, '2018-02-07', 'hemal', '', 'Divisional_S', '371550186v', 'W.L ARIYAWANSHA', 'KELANIGAMA', 0, 'Ambagamuva', 0),
+(98, '2018-02-07', 'hemal', '', 'Divisional_S', '895862991V', 'G.M.M NISANSALA KUMARI', 'UDUBULATHGAMA', 0, 'Ambagamuva', 0),
+(99, '2018-02-07', 'hemal', '', 'Divisional_S', '545880881V', 'P.H.M CHANDRALATHA', 'UDUBULATHGAMA', 0, 'Ambagamuva', 0),
+(100, '2018-02-07', 'hemal', '', 'Divisional_S', '727163395V', 'J.M.I KUSUMALATHA', 'GINIGATHHENA', 0, 'Ginigathena', 0),
+(101, '2018-02-07', 'hemal', '', 'Divisional_S', '478662322V', 'JEN MWRY PRANANDU', 'WATAWALA', 0, 'Watawala', 0),
+(102, '2018-02-07', 'hemal', '', 'Divisional_S', '686322386V', 'T.M MANGALIKA PRIYADARSHANI', 'BADULLA RD,NUWARAELIYA', 0, 'Ambagamuva', 0),
+(103, '2018-02-07', 'hemal', '', 'Divisional_S', '196755100148', 'J.M.R. JAYASUNDARA', 'GIHIGATHHENA', 0, 'Ginigathena', 0),
+(104, '2018-02-07', 'hemal', '', 'Divisional_S', '531773713V', 'P ARUMUGAM', 'MASKELIYA', 0, 'Shananan', 0),
+(105, '2018-02-07', 'hemal', '', 'Divisional_S', '635501588V', 'D.W SUBADRA DODANDUWA', 'KIRIWANELIYA', 0, 'Kiriwaneliya', 0),
+(106, '2018-02-07', 'hemal', '', 'Divisional_S', '646573149V', 'M.A PRIYANTHI', 'ambagamuwa udubulathgama', 0, 'Ambagamuva', 0),
+(107, '2018-02-07', 'hemal', '', 'Divisional_S', '661931396V', 'E.M SARATH PREMACHANDRA', 'KALAWELDENIYA', 0, 'Kalaweldeniya', 0),
+(108, '2018-02-07', 'hemal', '', 'Divisional_S', '581772254V', 'R.M JESUDASAN', 'DICKOYA', 0, 'Dickoya', 0),
+(109, '2018-02-07', 'hemal', '', 'Divisional_S', '', 'DISNA RANJANI', 'HATHLAHA', 0, 'Rampadeniya', 0),
+(110, '2018-02-07', 'hemal', '', 'Divisional_S', '196328001408', 'M.A SARATH SRILAL KUMARA', 'KAPULIYADDA', 0, 'Watawala', 0),
+(111, '2018-02-07', 'hemal', '', 'Divisional_S', '723382580V', 'H.G.K ROSHANTHA UDAYAKUMARA', 'NAWALAPITIYA', 0, 'Ambagamuva', 0),
+(112, '2018-02-12', 'hemal', '', 'Divisional_S', '472201018V', 'D S chandrathilake', 'kithulgala', 0, 'Ambagamuva', 0),
+(113, '2018-02-12', 'hemal', '', 'Divisional_S', '472201018V', 'D S chandrathilake', 'kithulgala', 0, 'Ambagamuva', 0),
+(114, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '800122392v', 'S.Ganeshan', 'welioya', 0, 'Hatton', 0),
+(115, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '833294113v', 'Danushka Gayan', 'Ganepalla,theligama', 0, 'Ambagamuva', 0),
+(116, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '747243182v', 'D.M Chandrawathi', 'Hatton', 0, 'Hatton', 0),
+(117, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '840502651v', 'I.Dawiner', 'Dikoya', 0, 'Dickoya', 0),
+(118, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '637140680v', 'W.G mallika Sugathapala', 'Pallewatta,Pitawala', 0, 'Pitawala', 0),
+(119, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '637140680v', 'W.G mallika Sugathapala', 'Pallewatta,Pitawala', 0, 'Pitawala', 0),
+(120, '2018-02-14', 'hemal', '', 'Divisional_S', '407881060v', 'D.M karunawathi', 'Morahenagama', 0, 'Morahenagama', 0),
+(121, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '818305613v', 'L.Maheshwari', 'Maussakelle estate', 0, 'Mausakele', 0),
+(122, '2018-02-14', 'hemal', 'Birth_Certificates', 'Registrar_Se', '818305613v', 'L.Maheshwari', 'Maussakelle', 0, 'Maskeliya', 0),
+(123, '2018-02-14', 'hemal', '', 'Divisional_S', '870913761v', 'IDawid', 'Rozella', 0, 'Rosella', 0),
+(124, '2018-02-14', 'hemal', '', 'Divisional_S', '692694090v', 'Jayakodi', 'Lakshapana', 0, 'Laxapana', 0),
+(125, '2018-02-14', 'hemal', '', 'Divisional_S', '777261657v', 'Anoma Mallika Gamage', 'Koththellena', 0, 'Jambuthenna', 0),
+(126, '2018-02-14', 'hemal', '', 'Divisional_S', '785044614v', 'Ismail Sabiya Bibi', 'Kudaoya,Hatton', 0, 'Ruwanpura', 0);
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `task_trans`
+--
+
+CREATE TABLE IF NOT EXISTS `task_trans` (
+  `trans_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `task_id` int(10) unsigned NOT NULL,
+  `trans_date` date NOT NULL,
+  `trans_job` varchar(45) NOT NULL,
+  `trans_dis` varchar(150) DEFAULT NULL,
+  `trans_user` varchar(12) NOT NULL,
+  `forward` varchar(12) NOT NULL,
+  `status` int(2) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`trans_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `tech_catagory`
+--
+
+CREATE TABLE IF NOT EXISTS `tech_catagory` (
+  `cat_id` int(2) NOT NULL AUTO_INCREMENT,
+  `catagory` varchar(25) NOT NULL,
+  PRIMARY KEY (`cat_id`),
+  UNIQUE KEY `catagory` (`catagory`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- ??? ???? ??????? ???? `tech_catagory`
+--
+
+INSERT INTO `tech_catagory` (`cat_id`, `catagory`) VALUES
+(5, 'CHEMICALE'),
+(4, 'Civil_Engineering'),
+(3, 'ELECTRONIC'),
+(1, 'FOOD_TECHNOLOGY'),
+(7, 'Formats'),
+(2, 'ICT'),
+(6, 'IT');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `up_file`
+--
+
+CREATE TABLE IF NOT EXISTS `up_file` (
+  `file_id` varchar(60) NOT NULL,
+  `file_type` int(2) NOT NULL DEFAULT '1',
+  `file_dis` varchar(200) DEFAULT NULL,
+  `file_cat` varchar(25) NOT NULL,
+  `up_date` date NOT NULL,
+  `up_user` varchar(12) NOT NULL,
+  `up_level` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`file_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- ??? ???? ??????? ???? `up_file`
+--
+
+INSERT INTO `up_file` (`file_id`, `file_type`, `file_dis`, `file_cat`, `up_date`, `up_user`, `up_level`) VALUES
+('report/admin.gif', 1, 'test image', 'CHEMICALE', '2010-10-19', 'hemal', 1),
+('report/hemal_project_report.doc', 2, 'test file', 'Civil_Engineering', '2010-10-19', 'hemal', 1),
+('report/New Stories (Highway Blues).wma', 3, 'test video', 'ELECTRONIC', '2010-10-19', 'hemal', 1),
+('report/Secretariat.docx', 2, '', 'CHEMICALE', '2013-01-11', 'hemal', 0),
+('report/sql.txt', 2, 'test chemical cat', 'CHEMICALE', '2005-08-19', 'hemal', 1),
+('report/Winter.jpg', 1, 'test image', 'ICT', '2005-08-19', 'hemal', 1);
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `user`
+--
+
+CREATE TABLE IF NOT EXISTS `user` (
+  `u_id` varchar(10) NOT NULL,
+  `u_pw` varchar(32) DEFAULT NULL,
+  `u_cat` int(2) NOT NULL DEFAULT '3',
+  `last` datetime NOT NULL,
+  PRIMARY KEY (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- ??? ???? ??????? ???? `user`
+--
+
+INSERT INTO `user` (`u_id`, `u_pw`, `u_cat`, `last`) VALUES
+('deepika', '660d2c0aa1a44c781323404612985116', 1, '2018-01-15 05:01:41'),
+('ds', '0b10e2e7e510c8332b12f35905680e72', 1, '2017-12-28 09:12:26'),
+('guest', 'd41d8cd98f00b204e9800998ecf8427e', 4, '2005-08-19 10:08:47'),
+('hemal', '202cb962ac59075b964b07152d234b70', 1, '2018-01-15 04:01:13'),
+('kaviraj', '202cb962ac59075b964b07152d234b70', 1, '2018-01-09 05:01:00'),
+('Malsha', '202cb962ac59075b964b07152d234b70', 1, '2018-01-15 07:01:18'),
+('nirosha', '8c9611718f0422ac8dd0baf0903d22e5', 1, '2018-02-14 06:02:07');
+
+-- --------------------------------------------------------
+
+--
+-- ?????? ???? ??? ??????? `user_cat`
+--
+
+CREATE TABLE IF NOT EXISTS `user_cat` (
+  `cat_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `catagory` varchar(15) NOT NULL,
+  PRIMARY KEY (`cat_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- ??? ???? ??????? ???? `user_cat`
+--
+
+INSERT INTO `user_cat` (`cat_id`, `catagory`) VALUES
+(1, 'admin'),
+(2, 'officer'),
+(3, 'user'),
+(4, 'temp');

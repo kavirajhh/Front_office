@@ -1,0 +1,626 @@
+-- phpMyAdmin SQL Dump
+-- version 2.6.4-pl3
+-- http://www.phpmyadmin.net
+-- 
+-- Host: localhost
+-- Generation Time: Aug 19, 2005 at 12:01 AM
+-- Server version: 5.0.15
+-- PHP Version: 5.0.5
+-- 
+-- Database: `maxdb`
+-- 
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `biz_register`
+-- 
+
+CREATE TABLE `biz_register` (
+  `trans_id` int(11) NOT NULL auto_increment,
+  `ent_id` varchar(12) NOT NULL,
+  `biz_name` varchar(40) NOT NULL,
+  `biz_cat` varchar(25) NOT NULL,
+  `biz_prod` varchar(25) NOT NULL,
+  `biz_dis` varchar(25) NOT NULL,
+  `biz_div` varchar(25) NOT NULL,
+  `biz_add` varchar(50) NOT NULL,
+  `biz_add2` varchar(30) NOT NULL,
+  `biz_tp` int(14) NOT NULL,
+  `biz_email` varchar(30) NOT NULL,
+  `user` varchar(12) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY  (`trans_id`),
+  UNIQUE KEY `biz_name` (`biz_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+-- 
+-- Dumping data for table `biz_register`
+-- 
+
+INSERT INTO `biz_register` VALUES (12, '1', 'ab pvt', 'ELECTRONIC', 'electronic', '', '', '15,nw', '', 5465654, 'asdsd@kjk', 'hemal', '2010-10-04 19:21:53');
+INSERT INTO `biz_register` VALUES (13, 'hemal', 'abd pvt', '3', 'GSHGH', '', '', 'GFSHGH', '', 718060578, 'hemal@localhost', 'hemal', '2005-08-19 02:26:34');
+INSERT INTO `biz_register` VALUES (14, 'hemal', 'abd2 pvt', 'FOOD', 'GSHGH', '', '', 'GFSHGH', '', 718060578, 'hemal@localhost', 'hemal', '2005-08-19 02:36:48');
+INSERT INTO `biz_register` VALUES (15, '', 'hk product', 'CHEMICALE', 'milk related', 'Kandy', 'panvila', '46,test ad', 'address 02', 81235465, 'hemal@localhost', 'hemal', '2010-10-17 18:58:46');
+INSERT INTO `biz_register` VALUES (16, 'hemal', 'hk product2', 'CHEMICALE', 'milk related', 'Kandy', 'patha', '46,test ad', 'address 02', 81235465, 'hemal@localhost', 'hemal', '2010-10-17 19:03:16');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `district`
+-- 
+
+CREATE TABLE `district` (
+  `dis_id` int(11) NOT NULL,
+  `district` varchar(30) NOT NULL,
+  PRIMARY KEY  (`dis_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `district`
+-- 
+
+INSERT INTO `district` VALUES (1, 'Colombo');
+INSERT INTO `district` VALUES (2, 'Gampaha');
+INSERT INTO `district` VALUES (3, 'Kaluthara');
+INSERT INTO `district` VALUES (4, 'Kandy');
+INSERT INTO `district` VALUES (5, 'Nuwara_Eliya');
+INSERT INTO `district` VALUES (6, 'Mathale');
+INSERT INTO `district` VALUES (7, 'Kegalle');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `division`
+-- 
+
+CREATE TABLE `division` (
+  `div_id` int(11) NOT NULL,
+  `dis_id` int(11) NOT NULL,
+  `division` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `division`
+-- 
+
+INSERT INTO `division` VALUES (1, 4, 'Gangawata Korale');
+INSERT INTO `division` VALUES (2, 4, 'Yatinuwara');
+INSERT INTO `division` VALUES (3, 4, 'Udunuwara');
+INSERT INTO `division` VALUES (4, 4, 'Udapalatha');
+INSERT INTO `division` VALUES (5, 4, 'Doluva');
+INSERT INTO `division` VALUES (6, 4, 'Pasbage korale');
+INSERT INTO `division` VALUES (7, 4, 'Ganga Ihala korale');
+INSERT INTO `division` VALUES (8, 4, 'Delthota');
+INSERT INTO `division` VALUES (9, 4, 'Hatharaliyadda');
+INSERT INTO `division` VALUES (10, 4, 'Thumpane');
+INSERT INTO `division` VALUES (11, 4, 'Akurana');
+INSERT INTO `division` VALUES (12, 4, 'Harispaththuva');
+INSERT INTO `division` VALUES (13, 4, 'Pujapitiya');
+INSERT INTO `division` VALUES (14, 4, 'Patha Dumbara');
+INSERT INTO `division` VALUES (15, 4, 'Meda Dumbara');
+INSERT INTO `division` VALUES (16, 4, 'Udadumbara');
+INSERT INTO `division` VALUES (17, 4, 'Minipe');
+INSERT INTO `division` VALUES (18, 4, 'Kundasale');
+INSERT INTO `division` VALUES (19, 4, 'patha hevahata');
+INSERT INTO `division` VALUES (20, 4, 'panvila');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ent_info`
+-- 
+
+CREATE TABLE `ent_info` (
+  `reg_no` int(11) NOT NULL auto_increment,
+  `l_name` varchar(15) default '""',
+  `f_name` varchar(15) default '""',
+  `m_name` varchar(15) default '""',
+  `marital` int(11) default '0',
+  `gender` int(11) NOT NULL default '0',
+  `nic` varchar(10) default '0',
+  `dob` date default NULL,
+  `add1` varchar(25) default '""',
+  `add2` varchar(25) default '""',
+  `distric` varchar(20) NOT NULL,
+  `division` varchar(20) NOT NULL,
+  `tp` int(14) default '0',
+  `tp2` int(11) NOT NULL,
+  `email` varchar(30) default '""',
+  `user_id` varchar(12) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY  (`reg_no`),
+  UNIQUE KEY `user_id` (`user_id`),
+  UNIQUE KEY `nic_3` (`nic`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+-- 
+-- Dumping data for table `ent_info`
+-- 
+
+INSERT INTO `ent_info` VALUES (1, 'hemal', 'kaviraj', 'hashantha', 0, 0, '78299', '2010-10-25', '16', 'ginigathena', 'kandy', 'pasbagekorale', 54545, 0, 'hemal@localhost', 'hemal', '2010-10-17');
+INSERT INTO `ent_info` VALUES (2, 'kaviraj', 'hemal', '', 0, 0, '785655656v', '2010-10-25', '14,samansirigama', 'Ginigathena', 'kandy', 'Patha', 125785887, 512242106, 'hemal@localhost', 'kaviraj', '2005-08-19');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `issues`
+-- 
+
+CREATE TABLE `issues` (
+  `issue_id` int(11) NOT NULL auto_increment,
+  `client` varchar(30) default NULL,
+  `title` varchar(25) default NULL,
+  `issue` text NOT NULL,
+  `date` datetime NOT NULL,
+  `auth` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`issue_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+-- 
+-- Dumping data for table `issues`
+-- 
+
+INSERT INTO `issues` VALUES (3, 'hemal', 'computer', 'beep', '2005-08-19 01:56:57', 1);
+INSERT INTO `issues` VALUES (4, 'hemal', 'computer', 'message id for ', '2005-08-19 01:57:21', 1);
+INSERT INTO `issues` VALUES (5, 'acsac', 'cas', 'cdsffdsadfdfd\r\n454545454544', '0000-00-00 00:00:00', 1);
+INSERT INTO `issues` VALUES (6, 'hkk', 'zz', 'test is', '2010-10-05 10:16:39', 1);
+INSERT INTO `issues` VALUES (7, 'kaviraj', 'test', 'this is test message for test search', '2010-10-05 05:32:24', 1);
+INSERT INTO `issues` VALUES (8, 'hemal@localhost', 'test retern mail', 'check the return mail of issues', '2010-10-13 22:14:05', 1);
+INSERT INTO `issues` VALUES (9, 'hemal@localhost', 'test retern mail', 'check the return mail of issues', '2010-10-13 22:14:40', 1);
+INSERT INTO `issues` VALUES (10, 'hemal@localhost', 'test retern mail', 'check the return mail of issues', '2010-10-13 22:15:25', 0);
+INSERT INTO `issues` VALUES (11, '', 'computer', 'fghfghgfh', '2010-10-13 22:17:18', 0);
+INSERT INTO `issues` VALUES (12, '', 'computer', 'fghfghgfh', '2010-10-13 22:19:59', 0);
+INSERT INTO `issues` VALUES (13, 'hemal@localhos', 'computer', 'fghfghgfh', '2010-10-13 22:20:42', 0);
+INSERT INTO `issues` VALUES (14, 'hemal@localhos', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:22:58', 0);
+INSERT INTO `issues` VALUES (15, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:24:06', 0);
+INSERT INTO `issues` VALUES (16, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:24:39', 1);
+INSERT INTO `issues` VALUES (17, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:26:55', 1);
+INSERT INTO `issues` VALUES (18, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:27:53', 0);
+INSERT INTO `issues` VALUES (19, 'hemal@localhost', 'chemical', 'what is the easiest way for develop pqrs ', '2010-10-20 20:29:23', 1);
+INSERT INTO `issues` VALUES (20, 'hemal@localhost', 'test retern mail', 'test the php page', '2010-10-20 20:33:52', 0);
+INSERT INTO `issues` VALUES (21, 'hemal@localhost', 'ICT', 'wwwww', '2010-10-20 20:41:13', 1);
+INSERT INTO `issues` VALUES (22, 'hemal@localhost', 'CHEMICALE', 'test che', '2010-10-20 21:42:30', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `message`
+-- 
+
+CREATE TABLE `message` (
+  `id` int(11) NOT NULL auto_increment,
+  `recever` varchar(12) NOT NULL,
+  `title` varchar(40) NOT NULL,
+  `post` varchar(300) NOT NULL,
+  `date` datetime NOT NULL,
+  `sender` varchar(12) NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=33 ;
+
+-- 
+-- Dumping data for table `message`
+-- 
+
+INSERT INTO `message` VALUES (20, 'kaviraj', 'test', 'sadasdsadsd', '2005-08-19 00:31:35', 'hemal');
+INSERT INTO `message` VALUES (24, 'guest', '6563565636', '735676675347', '2005-08-19 01:29:21', 'hemal');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `ml_subscribe`
+-- 
+
+CREATE TABLE `ml_subscribe` (
+  `trans_id` int(11) NOT NULL auto_increment,
+  `user_id` varchar(12) NOT NULL,
+  `tech_cat` int(2) NOT NULL,
+  PRIMARY KEY  (`trans_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=38 ;
+
+-- 
+-- Dumping data for table `ml_subscribe`
+-- 
+
+INSERT INTO `ml_subscribe` VALUES (36, 'hemal', 5);
+INSERT INTO `ml_subscribe` VALUES (37, 'hemal', 4);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `pages`
+-- 
+
+CREATE TABLE `pages` (
+  `pg_id` varchar(4) NOT NULL,
+  `pg_name` char(25) NOT NULL,
+  `pg_cat` int(11) NOT NULL,
+  `pg_link` varchar(40) NOT NULL,
+  PRIMARY KEY  (`pg_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `pages`
+-- 
+
+INSERT INTO `pages` VALUES ('adct', 'Technology Category''s', 0, '');
+INSERT INTO `pages` VALUES ('addb', 'Add Business to user', 1, 'biz_register.php');
+INSERT INTO `pages` VALUES ('addu', 'User Register', 1, 'ent_register.php');
+INSERT INTO `pages` VALUES ('adpr', 'Add Program', 5, '');
+INSERT INTO `pages` VALUES ('atis', 'Authorized Issues', 2, '');
+INSERT INTO `pages` VALUES ('atso', 'Authorized Solutions', 2, '');
+INSERT INTO `pages` VALUES ('chau', 'View & Change Data', 1, 'view_ent.php');
+INSERT INTO `pages` VALUES ('flat', 'File Authorize', 3, '');
+INSERT INTO `pages` VALUES ('flua', 'Unauthorized Files', 0, '');
+INSERT INTO `pages` VALUES ('isat', 'Issue Authorize', 2, '');
+INSERT INTO `pages` VALUES ('mlsb', 'Mail List Subscribe', 1, '');
+INSERT INTO `pages` VALUES ('ncot', 'Not Complete Task', 4, '');
+INSERT INTO `pages` VALUES ('opts', 'Open Task', 4, '');
+INSERT INTO `pages` VALUES ('prol', 'Program List', 5, '');
+INSERT INTO `pages` VALUES ('pron', 'Program Names', 5, '');
+INSERT INTO `pages` VALUES ('schf', 'Search File', 3, '');
+INSERT INTO `pages` VALUES ('schi', 'Search', 2, '');
+INSERT INTO `pages` VALUES ('scht', 'Search', 4, '');
+INSERT INTO `pages` VALUES ('soat', 'Solution Authorize', 2, '');
+INSERT INTO `pages` VALUES ('solu', 'Solution''s', 2, '');
+INSERT INTO `pages` VALUES ('subi', 'Submit Issue', 2, '');
+INSERT INTO `pages` VALUES ('tetn', 'Task Transaction', 4, '');
+INSERT INTO `pages` VALUES ('upfl', 'File Upload', 3, '');
+INSERT INTO `pages` VALUES ('vatr', 'View Authorize Technical', 3, '');
+INSERT INTO `pages` VALUES ('vnar', 'View non Authorize Techni', 3, '');
+INSERT INTO `pages` VALUES ('vtbd', 'View Task BY Date', 4, '');
+INSERT INTO `pages` VALUES ('vtbn', 'View Task BY Name', 4, '');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `pg_access`
+-- 
+
+CREATE TABLE `pg_access` (
+  `id` int(11) NOT NULL auto_increment,
+  `page_id` varchar(4) NOT NULL,
+  `u_cat` int(10) unsigned NOT NULL,
+  PRIMARY KEY  (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=180 ;
+
+-- 
+-- Dumping data for table `pg_access`
+-- 
+
+INSERT INTO `pg_access` VALUES (142, 'addu', 1);
+INSERT INTO `pg_access` VALUES (143, 'adpr', 1);
+INSERT INTO `pg_access` VALUES (144, 'atis', 1);
+INSERT INTO `pg_access` VALUES (145, 'atso', 1);
+INSERT INTO `pg_access` VALUES (146, 'flat', 1);
+INSERT INTO `pg_access` VALUES (147, 'isat', 1);
+INSERT INTO `pg_access` VALUES (148, 'mlsb', 1);
+INSERT INTO `pg_access` VALUES (149, 'ncot', 1);
+INSERT INTO `pg_access` VALUES (150, 'opts', 1);
+INSERT INTO `pg_access` VALUES (151, 'prol', 1);
+INSERT INTO `pg_access` VALUES (152, 'pron', 1);
+INSERT INTO `pg_access` VALUES (153, 'schf', 1);
+INSERT INTO `pg_access` VALUES (154, 'schi', 1);
+INSERT INTO `pg_access` VALUES (155, 'scht', 1);
+INSERT INTO `pg_access` VALUES (156, 'soat', 1);
+INSERT INTO `pg_access` VALUES (157, 'solu', 1);
+INSERT INTO `pg_access` VALUES (158, 'subi', 1);
+INSERT INTO `pg_access` VALUES (159, 'tetn', 1);
+INSERT INTO `pg_access` VALUES (160, 'upfl', 1);
+INSERT INTO `pg_access` VALUES (161, 'vatr', 1);
+INSERT INTO `pg_access` VALUES (162, 'vnar', 1);
+INSERT INTO `pg_access` VALUES (163, 'vtbd', 1);
+INSERT INTO `pg_access` VALUES (164, 'vtbn', 1);
+INSERT INTO `pg_access` VALUES (167, 'adct', 2);
+INSERT INTO `pg_access` VALUES (171, 'adct', 2);
+INSERT INTO `pg_access` VALUES (174, 'addb', 1);
+INSERT INTO `pg_access` VALUES (175, 'chau', 1);
+INSERT INTO `pg_access` VALUES (176, 'chau', 1);
+INSERT INTO `pg_access` VALUES (177, 'flua', 1);
+INSERT INTO `pg_access` VALUES (178, 'addb', 1);
+INSERT INTO `pg_access` VALUES (179, 'adct', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `pro_id`
+-- 
+
+CREATE TABLE `pro_id` (
+  `trans_id` int(11) NOT NULL auto_increment,
+  `course_id` varchar(12) NOT NULL,
+  `name` varchar(25) NOT NULL,
+  `add` varchar(60) NOT NULL,
+  `tp` int(16) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `date` datetime NOT NULL,
+  PRIMARY KEY  (`trans_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `pro_id`
+-- 
+
+INSERT INTO `pro_id` VALUES (1, 'ntr13', 'hemal', '30, new road, nawalapitiya', 45654545, 'hjhg@bkjbh.com', '2005-08-21 04:08:51');
+INSERT INTO `pro_id` VALUES (2, 'ntr13', 'hemal2', '30, new road, nawalapitiya', 125785887, 'hjjh@hjghg.com', '2005-08-21 04:08:28');
+INSERT INTO `pro_id` VALUES (3, 'ntr13', 'hemal6', '30, new road, nawalapitiya', 776578578, 'hjjh@hjghg.com', '2005-08-21 05:08:22');
+INSERT INTO `pro_id` VALUES (4, 'eproduct3', '', '', 0, '', '2010-10-20 03:10:35');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `pro_schedule`
+-- 
+
+CREATE TABLE `pro_schedule` (
+  `pro_trns_id` int(11) NOT NULL auto_increment,
+  `pro_id` varchar(12) NOT NULL,
+  `program` varchar(50) NOT NULL,
+  `pro_date` datetime NOT NULL,
+  `pro_org` varchar(25) NOT NULL,
+  `pro_location` varchar(50) NOT NULL,
+  `pro_tp` int(11) NOT NULL,
+  `pro_email` varchar(50) NOT NULL,
+  `pro_vacants` int(11) NOT NULL,
+  `user` varchar(12) NOT NULL,
+  `up_date` datetime NOT NULL,
+  `pro_com` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`pro_trns_id`),
+  UNIQUE KEY `pro_id_2` (`pro_id`),
+  KEY `pro_id` (`pro_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+-- 
+-- Dumping data for table `pro_schedule`
+-- 
+
+INSERT INTO `pro_schedule` VALUES (1, 'ntr13', 'dehydration', '2010-10-03 09:30:00', 'vrc psk', 'psk', 5245445, 'bv@hjgvh.com', 3, 'hemal', '2005-08-21 12:34:55', 0);
+INSERT INTO `pro_schedule` VALUES (2, 'eproduct3', 'Training program abour e product dev', '2010-10-03 09:30:30', 'VRC pasbage', 'DS_nawalapitiya', 542222238, 'ds@pasbagekorale.lk', 30, 'hk', '2005-08-21 12:48:16', 0);
+INSERT INTO `pro_schedule` VALUES (3, 'eproduct2', 'Training program abour e product development', '2010-11-03 09:30:00', 'VRC pasbage', 'DS_nawalapitiya', 542222238, 'ds@pasbagekorale.lk', 45, 'hemal', '2005-08-21 01:08:14', 0);
+INSERT INTO `pro_schedule` VALUES (4, 'eproduct', 'Training program abour e product development', '2010-11-03 09:30:00', 'VRC pasbage', 'DS_nawalapitiya', 542222238, 'ds@pasbagekorale.lk', 45, 'hemal', '2005-08-21 01:08:29', 0);
+INSERT INTO `pro_schedule` VALUES (5, 'food', '', '0000-00-00 00:00:00', '', 'psk', 0, '', 0, 'hemal', '2005-08-21 04:08:19', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `product`
+-- 
+
+CREATE TABLE `product` (
+  `pro_id` int(11) NOT NULL auto_increment,
+  `user` varchar(12) NOT NULL,
+  `product` varchar(30) NOT NULL,
+  PRIMARY KEY  (`pro_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+-- 
+-- Dumping data for table `product`
+-- 
+
+INSERT INTO `product` VALUES (1, 'hemal', 'bites');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `solution`
+-- 
+
+CREATE TABLE `solution` (
+  `trans_id` int(11) NOT NULL auto_increment,
+  `issue_id` int(11) NOT NULL,
+  `solution` text NOT NULL,
+  `catagory` varchar(20) NOT NULL default 'other',
+  `user_ID` varchar(12) NOT NULL,
+  `date` datetime NOT NULL,
+  `auth` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`trans_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+-- 
+-- Dumping data for table `solution`
+-- 
+
+INSERT INTO `solution` VALUES (1, 8, 'qqqq', 'other', 'hk trans', '2010-10-05 00:00:00', 1);
+INSERT INTO `solution` VALUES (2, 9, 'qqqq', 'other', 'hk trans', '2010-10-05 00:00:00', 1);
+INSERT INTO `solution` VALUES (3, 8, 'qqqq', 'other', 'hk trans', '2010-10-05 10:10:32', 1);
+INSERT INTO `solution` VALUES (4, 3, 'this is test massege for check solution', 'IT', 'hk trans', '2010-10-05 05:10:31', 0);
+INSERT INTO `solution` VALUES (5, 4, 'solution screen test', 'test', 'hk trans', '2010-10-06 23:10:32', 0);
+INSERT INTO `solution` VALUES (6, 17, 'it is like that', 'kavirajhh@yahoo.com', 'hemal', '2010-10-20 21:10:40', 1);
+INSERT INTO `solution` VALUES (7, 22, 'is 22 solution test', 'kavirajhh@yahoo.com', 'hemal', '2010-10-20 22:10:21', 1);
+INSERT INTO `solution` VALUES (8, 22, 'test second', 'kavirajhh@yahoo.com', 'hemal', '2010-10-20 22:10:41', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `task_open`
+-- 
+
+CREATE TABLE `task_open` (
+  `task_id` int(10) unsigned NOT NULL auto_increment,
+  `task_date` date NOT NULL,
+  `task_user` varchar(12) NOT NULL,
+  `task` varchar(100) NOT NULL,
+  `task_client` varchar(45) default NULL,
+  `task_email` varchar(45) default NULL,
+  `task_phone` int(11) default NULL,
+  `task_complete` tinyint(1) NOT NULL default '0',
+  PRIMARY KEY  (`task_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
+
+-- 
+-- Dumping data for table `task_open`
+-- 
+
+INSERT INTO `task_open` VALUES (4, '0000-00-00', 'hemal', 'request info', 'kumara', 'abc@yahoo.com', 1254878, 1);
+INSERT INTO `task_open` VALUES (5, '2010-09-30', 'hemal', 'for', 'hemal', 'kavirajhh@yahoo.com', 215455, 1);
+INSERT INTO `task_open` VALUES (6, '2010-09-30', 'hemal', 'for', 'hemal', 'kavirajhh@yahoo.com', 215455, 1);
+INSERT INTO `task_open` VALUES (7, '2010-10-02', 'hemal', 'register to classs', 'weerasingha', 'khfg@yahoo.com', 125484, 1);
+INSERT INTO `task_open` VALUES (8, '2010-10-02', 'hemal', 'soil test ', 'kapila', 'kapila@hey.com', 79546566, 1);
+INSERT INTO `task_open` VALUES (9, '2010-10-02', 'hemal', 'soil test ', 'kapila', 'kapila@hey.com', 79546566, 1);
+INSERT INTO `task_open` VALUES (10, '2010-10-02', 'hemal', 'llllllll', 'kapila', 'kapila@hey.com', 125484, 1);
+INSERT INTO `task_open` VALUES (11, '2010-10-02', 'hemal', 'requesr loan', 'nihal', 'nkk@ghg.com', 45654545, 1);
+INSERT INTO `task_open` VALUES (12, '2010-10-14', 'hemal', 'test the auto generate email', 'pereira', 'hemal@localhost', 718060578, 1);
+INSERT INTO `task_open` VALUES (13, '2010-10-14', 'hemal', 'test the auto generate email', 'pereira', 'hemal@localhost', 718060578, 0);
+INSERT INTO `task_open` VALUES (14, '2010-10-14', 'hemal', 'test 2', 'shantha', 'hemal@localhost', 125484, 0);
+INSERT INTO `task_open` VALUES (15, '2010-10-14', 'hemal', 'test the auto generate email', 'pereira', 'hemal@localhost', 718060578, 1);
+INSERT INTO `task_open` VALUES (16, '2010-10-14', 'hemal', 'test the auto generate email', 'pereira', 'hemal@localhost', 718060578, 0);
+INSERT INTO `task_open` VALUES (17, '2010-10-14', 'hemal', 'test the auto generate email', 'pereira', 'hemal@localhost', 718060578, 0);
+INSERT INTO `task_open` VALUES (18, '2010-10-14', 'hemal', 'test the auto generate email', 'pereira', 'hemal@localhost', 718060578, 0);
+INSERT INTO `task_open` VALUES (19, '2010-10-19', 'hemal', 'Request the matirial test', 'Gunasekara', 'hemal@localhost', 542232365, 0);
+INSERT INTO `task_open` VALUES (20, '2010-10-19', 'hemal', 'Request the matirial test for metle', 'Gunasekara', 'hemal@localhost', 542232365, 0);
+INSERT INTO `task_open` VALUES (21, '2010-10-19', 'hemal', 'Request the matirial test for metle', 'Gunasekara p.N', 'hemal@localhost', 542232365, 0);
+INSERT INTO `task_open` VALUES (22, '2010-10-19', 'hemal', 'Request the matirial test for metle', 'Gunasekara PN', 'hemal@localhost', 542232365, 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `task_trans`
+-- 
+
+CREATE TABLE `task_trans` (
+  `trans_id` int(10) unsigned NOT NULL auto_increment,
+  `task_id` int(10) unsigned NOT NULL,
+  `trans_date` date NOT NULL,
+  `trans_job` varchar(45) NOT NULL,
+  `trans_dis` varchar(150) default NULL,
+  `trans_user` varchar(12) NOT NULL,
+  `forward` varchar(12) NOT NULL,
+  `status` int(2) NOT NULL default '0',
+  PRIMARY KEY  (`trans_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+
+-- 
+-- Dumping data for table `task_trans`
+-- 
+
+INSERT INTO `task_trans` VALUES (3, 4, '2010-09-30', 'jkhgkj', 'lgg', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (4, 4, '2010-09-30', 'jkhgkj', 'lgg', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (5, 5, '2010-10-02', 'send to kandy', 'for autho', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (6, 5, '2010-10-02', 'return report', 'ret date 2012', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (7, 9, '2010-10-02', 'send to test', 'on 2010/07/03', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (8, 9, '2010-10-02', 'PH is ok', 'on 2010/07/09', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (9, 10, '2010-10-02', 'hjgjgjh', 'jhgkgjg', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (10, 11, '2010-10-02', 'application error', 'no garantee', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (11, 11, '2010-10-02', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (12, 11, '2010-10-02', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (13, 11, '2010-10-02', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (14, 10, '2010-10-04', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (15, 6, '2010-10-04', 'test', 'test task trans', 'hk trans', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (16, 6, '2005-08-19', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (17, 0, '0000-00-00', '', '', '', '', 1);
+INSERT INTO `task_trans` VALUES (18, 7, '2010-10-14', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (19, 9, '2010-10-14', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (20, 12, '2010-10-14', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (21, 15, '2005-08-19', 'test task transection', 'trans discription', 'hk trans', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (22, 13, '2005-08-19', 'return report', 'test mail', 'hk trans', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (23, 13, '2005-08-19', 'return report', 'test mail', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (24, 13, '2005-08-19', 'return report', 'test mail', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (25, 13, '2005-08-19', 'return report', 'test mail', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (26, 13, '2005-08-19', 'return report', 'test mail', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (27, 13, '2005-08-19', 'return report', 'test mail', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (28, 13, '2005-08-19', 'return report', 'test mail', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (29, 15, '2005-08-19', 'JOB COMPLETED', '', 'hk trans', '', 1);
+INSERT INTO `task_trans` VALUES (30, 13, '2010-10-19', 'test task transection', 'this is test', '', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (31, 13, '2010-10-19', 'test task transection', 'this is test', '', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (32, 18, '2010-10-20', 'test the forward', 'test ', 'hemal', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (33, 21, '2010-10-20', 'fdsaf', 'dsfdsf', 'hemal', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (34, 13, '2005-08-19', 'test', 'test thw foeward', 'hemal', 'hemal', 1);
+INSERT INTO `task_trans` VALUES (35, 13, '2005-08-19', 'test task transection', 'forward', 'hemal', 'hemal', 0);
+INSERT INTO `task_trans` VALUES (36, 21, '2005-08-19', 'send to test', 'the test', 'hemal', 'hemal', 0);
+INSERT INTO `task_trans` VALUES (37, 13, '2005-08-19', 'test ', 'kjhjhj', 'hemal', 'kaviraj', 0);
+INSERT INTO `task_trans` VALUES (38, 13, '2005-08-19', 'rrr', 'rrrr', 'hemal', 'kaviraj', 0);
+INSERT INTO `task_trans` VALUES (39, 13, '2005-08-19', 'application error', 'adddad', 'hemal', 'kaviraj', 0);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `tech_catagory`
+-- 
+
+CREATE TABLE `tech_catagory` (
+  `cat_id` int(2) NOT NULL auto_increment,
+  `catagory` varchar(25) NOT NULL,
+  PRIMARY KEY  (`cat_id`),
+  UNIQUE KEY `catagory` (`catagory`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+-- 
+-- Dumping data for table `tech_catagory`
+-- 
+
+INSERT INTO `tech_catagory` VALUES (5, 'CHEMICALE');
+INSERT INTO `tech_catagory` VALUES (4, 'Civil_Engineering');
+INSERT INTO `tech_catagory` VALUES (3, 'ELECTRONIC');
+INSERT INTO `tech_catagory` VALUES (1, 'FOOD_TECHNOLOGY');
+INSERT INTO `tech_catagory` VALUES (2, 'ICT');
+INSERT INTO `tech_catagory` VALUES (6, 'IT');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `up_file`
+-- 
+
+CREATE TABLE `up_file` (
+  `file_id` varchar(60) NOT NULL,
+  `file_type` int(2) NOT NULL default '1',
+  `file_dis` varchar(200) default NULL,
+  `file_cat` varchar(25) NOT NULL,
+  `up_date` date NOT NULL,
+  `up_user` varchar(12) NOT NULL,
+  `up_level` int(11) NOT NULL default '0',
+  PRIMARY KEY  (`file_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `up_file`
+-- 
+
+INSERT INTO `up_file` VALUES ('report/admin.gif', 1, 'test image', 'CHEMICALE', '2010-10-19', 'hemal', 1);
+INSERT INTO `up_file` VALUES ('report/hemal_project_report.doc', 2, 'test file', 'Civil_Engineering', '2010-10-19', 'hemal', 1);
+INSERT INTO `up_file` VALUES ('report/New Stories (Highway Blues).wma', 3, 'test video', 'ELECTRONIC', '2010-10-19', 'hemal', 1);
+INSERT INTO `up_file` VALUES ('report/sql.txt', 2, 'test chemical cat', 'CHEMICALE', '2005-08-19', 'hemal', 1);
+INSERT INTO `up_file` VALUES ('report/Winter.jpg', 1, 'test image', 'ICT', '2005-08-19', 'hemal', 1);
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `user`
+-- 
+
+CREATE TABLE `user` (
+  `u_id` varchar(10) NOT NULL,
+  `u_pw` varchar(32) default NULL,
+  `u_cat` int(2) NOT NULL default '3',
+  `last` datetime NOT NULL,
+  PRIMARY KEY  (`u_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- 
+-- Dumping data for table `user`
+-- 
+
+INSERT INTO `user` VALUES ('guest', 'd41d8cd98f00b204e9800998ecf8427e', 4, '2005-08-19 10:08:47');
+INSERT INTO `user` VALUES ('hemal', '202cb962ac59075b964b07152d234b70', 1, '2005-08-19 12:08:08');
+INSERT INTO `user` VALUES ('kaviraj', '202cb962ac59075b964b07152d234b70', 1, '2005-08-19 12:08:00');
+
+-- --------------------------------------------------------
+
+-- 
+-- Table structure for table `user_cat`
+-- 
+
+CREATE TABLE `user_cat` (
+  `cat_id` int(10) unsigned NOT NULL auto_increment,
+  `catagory` varchar(15) NOT NULL,
+  PRIMARY KEY  (`cat_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+-- 
+-- Dumping data for table `user_cat`
+-- 
+
+INSERT INTO `user_cat` VALUES (1, 'admin');
+INSERT INTO `user_cat` VALUES (2, 'officer');
+INSERT INTO `user_cat` VALUES (3, 'user');
+INSERT INTO `user_cat` VALUES (4, 'temp');

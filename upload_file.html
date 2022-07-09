@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>upload Technical Report</title>
+<style type="text/css">
+<!--
+.style1 {
+	font-size: 18px;
+	font-weight: bold;
+}
+-->
+</style>
+</head>
+
+<body>
+<label></label>
+<label></label>
+<form id="form1" name="form1" enctype="multipart/form-data" method="post" action="upload_file.php">
+<table width="100%" height="171" border="0">
+  <tr>
+    <td colspan="3" bgcolor="#6699CC"><div align="center" class="style1">Upload Technical Report </div></td>
+  </tr>
+  
+  <tr>
+    <td>&nbsp;</td>
+    <td><strong>Catogary</strong></td>
+    <td><label>
+      <select name="cat" id="cat">
+      </select>
+    </label></td>
+  </tr>
+  <tr>
+    <td width="19%">&nbsp;</td>
+    <td width="15%"><strong>Discription</strong></td>
+    <td width="66%">
+      <label>
+      <textarea name="file_dis" cols="50" rows="4" id="file_dis"></textarea>
+        </label>    </td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td><strong>File Path </strong></td>
+    <td><label>
+      <input name="file_id" type="file" id="file_id" size="30" maxlength="60" />
+    </label></td>
+  </tr>
+  <tr>
+    <td colspan="3" bgcolor="#6699CC"><label>
+      <div align="right">
+        <input name="up_file_bt" type="submit" id="up_file_bt" value="Upload File" />
+        <input type="reset" name="Reset" value="Clear Data" />
+        </div>
+    </label></td>
+  </tr>
+</table>
+</form>
+</body>
+</html>
+
